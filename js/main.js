@@ -1,22 +1,16 @@
 (function () {
     'use strict'
 
-    document.getElementById('login').addEventListener('click', login);
+    document.getElementById('fetch-counter').addEventListener('click', fetchCounter);
 
-    function login() {
-        let username = document.getElementById('creds-user').value;
-        let pass = document.getElementById('creds-pass').value;
-        fetchCounter(username, pass);
-    }
-
-    function fetchCounter(user, pass) {
-        let url = 'http://127.0.0.1:8080/iosr/app/greeting';
-        console.log('fetching');
+    function fetchCounter() {
+        //TODO URL should point to load balancer
+        let url = 'http://iosr-project.herokuapp.com/iosr/app/greeting';
+        let val = document.getElementById('input-name').value;
+        if (val)
+            url += '?name=' + val;
         fetch(url, {
             method: 'GET',
-            headers: {
-                'Authorization': 'Basic ' + btoa(user + ':' + pass)
-            }
         })
             .then(response => response.json())
             .then(value => receivedValue(value))
@@ -24,8 +18,9 @@
     }
 
     function receivedValue(value) {
-        document.getElementById('creds').classList.add('invisible');
+        console.log(value);
         document.getElementById('reply-content').classList.remove('invisible');
-        document.getElementById('counter').innerText = value;
+        document.getElementById('reply-content-counter').innerText = value.id;
+        document.getElementById('reply-content-value').innerText = value.content;
     }
 })();

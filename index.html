@@ -7,21 +7,17 @@
 </head>
 
 <body>
-    <div id="creds">
-        <div>
-            <label for="creds-user">Username:</label>
-            <input type="text" id="creds-user" value="user" />
-        </div>
-        <div>
-            <label for="creds-pass">Password:</label>
-            <input type="password" id="creds-pass" />
-        </div>
-        <button id="login">Login</button>
-    </div>
+    <h3>Name:
+        <input id="input-name" type="text" />
+    </h3>
+    <button id="fetch-counter">Fetch</button>
     <div id="reply-content" class="invisible">
         <h1>Ahoj przygodo!</h1>
         <h3>Licznik:
-            <span id="counter">0</span>
+            <span id="reply-content-counter">0</span>
+        </h3>
+        <h3>Wiadomość:
+            <span id="reply-content-value"></span>
         </h3>
     </div>
     <script src="build/main.bundle.js"></script>
