@@ -4,8 +4,7 @@
     document.getElementById('fetch-counter').addEventListener('click', fetchCounter);
 
     function fetchCounter() {
-        //TODO URL should point to load balancer
-        let url = 'http://iosr-project.herokuapp.com/iosr/app/greeting';
+        let url = 'http://127.0.0.1:8765/api/iosr-project/iosr/app/greeting';
         let val = document.getElementById('input-name').value;
         if (val)
             url += '?name=' + val;
